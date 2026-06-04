@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #0b0d12;
+  color: #e7eaf0;
+  font-family: 'Sora', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* Subtle workspace grid backdrop */
+.workspace-grid {
+  background-color: #0b0d12;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Thin custom scrollbars */
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: #39414f;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #525b6b;
+  background-clip: content-box;
+}
+
+/* Numeric inputs use mono */
+input[type='number'],
+.tabular {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Remove number spinners */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+@layer components {
+  .panel {
+    @apply bg-ink-800 border border-ink-600 rounded-xl shadow-panel;
+  }
+  .field {
+    @apply bg-ink-700 border border-ink-500 rounded-lg px-2 py-1.5 text-sm text-slate-100
+      outline-none focus:border-accent focus:ring-1 focus:ring-accent/40 transition;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-sm
+      font-medium transition select-none disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply btn text-slate-300 hover:bg-ink-600 hover:text-white;
+  }
+  .btn-soft {
+    @apply btn bg-ink-600 text-slate-100 hover:bg-ink-500;
+  }
+  .btn-accent {
+    @apply btn bg-accent text-white hover:bg-accent-soft shadow-[0_6px_20px_-8px_rgba(91,140,255,0.8)];
+  }
+  .icon-btn {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-lg text-slate-300
+      hover:bg-ink-600 hover:text-white transition;
+  }
+  .icon-btn-active {
+    @apply bg-accent/20 text-accent-soft;
+  }
+  .section-label {
+    @apply text-[11px] font-semibold uppercase tracking-wider text-ink-300 px-1;
+  }
+}
